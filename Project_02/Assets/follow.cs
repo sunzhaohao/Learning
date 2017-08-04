@@ -17,6 +17,10 @@ public class follow : MonoBehaviour {
 
 		Quaternion target = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * 3f);
 		transform.rotation.Set(target.x,target.y,target.z,target.w);
-		 
+
+		if(Input.GetKey(KeyCode.R))
+			transform.Rotate(new Vector3(1,0,0));
+		if(Input.GetKey(KeyCode.Q))
+			transform.Rotate(new Vector3(-1,0,0));
 	}
 }

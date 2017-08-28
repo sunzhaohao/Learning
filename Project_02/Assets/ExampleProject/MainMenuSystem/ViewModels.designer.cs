@@ -141,6 +141,10 @@ namespace uFrame.ExampleProject {
             _IsActiveProperty = new P<Boolean>(this, "IsActive");
         }
         
+        public virtual void ExecuteClose() {
+            this.Close.OnNext(new CloseCommand());
+        }
+        
         public override void Read(ISerializerStream stream) {
             base.Read(stream);
             this.IsActive = stream.DeserializeBool("IsActive");;
@@ -176,6 +180,8 @@ namespace uFrame.ExampleProject {
         
         private P<String> _PasswordProperty;
         
+        private P<String> _ErrorMessageProperty;
+        
         private Signal<LoginCommand> _Login;
         
         public LoginScreenViewModelBase(uFrame.Kernel.IEventAggregator aggregator) : 
@@ -200,6 +206,15 @@ namespace uFrame.ExampleProject {
             }
         }
         
+        public virtual P<String> ErrorMessageProperty {
+            get {
+                return _ErrorMessageProperty;
+            }
+            set {
+                _ErrorMessageProperty = value;
+            }
+        }
+        
         public virtual String Username {
             get {
                 return UsernameProperty.Value;
@@ -218,6 +233,15 @@ namespace uFrame.ExampleProject {
             }
         }
         
+        public virtual String ErrorMessage {
+            get {
+                return ErrorMessageProperty.Value;
+            }
+            set {
+                ErrorMessageProperty.Value = value;
+            }
+        }
+        
         public virtual Signal<LoginCommand> Login {
             get {
                 return _Login;
@@ -232,6 +256,11 @@ namespace uFrame.ExampleProject {
             this.Login = new Signal<LoginCommand>(this);
             _UsernameProperty = new P<String>(this, "Username");
             _PasswordProperty = new P<String>(this, "Password");
+            _ErrorMessageProperty = new P<String>(this, "ErrorMessage");
+        }
+        
+        public virtual void ExecuteLogin() {
+            this.Login.OnNext(new LoginCommand());
         }
         
         public override void Read(ISerializerStream stream) {
@@ -253,6 +282,8 @@ namespace uFrame.ExampleProject {
             list.Add(new ViewModelPropertyInfo(_UsernameProperty, false, false, false, false));
             // PropertiesChildItem
             list.Add(new ViewModelPropertyInfo(_PasswordProperty, false, false, false, false));
+            // PropertiesChildItem
+            list.Add(new ViewModelPropertyInfo(_ErrorMessageProperty, false, false, false, false));
         }
     }
     
@@ -351,6 +382,14 @@ namespace uFrame.ExampleProject {
             _AvailableResolutions = new ModelCollection<ResolutionInformation>(this, "AvailableResolutions");
         }
         
+        public virtual void ExecuteApply() {
+            this.Apply.OnNext(new ApplyCommand());
+        }
+        
+        public virtual void ExecuteDefault() {
+            this.Default.OnNext(new DefaultCommand());
+        }
+        
         public override void Read(ISerializerStream stream) {
             base.Read(stream);
             this.Volume = stream.DeserializeFloat("Volume");;
@@ -416,6 +455,10 @@ namespace uFrame.ExampleProject {
             base.Bind();
             this.SelectLevel = new Signal<SelectLevelCommand>(this);
             _AvailableLevels = new ModelCollection<LevelDescriptor>(this, "AvailableLevels");
+        }
+        
+        public virtual void ExecuteSelectLevel(LevelDescriptor argument) {
+            this.SelectLevel.OnNext(new SelectLevelCommand(){Argument = argument});
         }
         
         public override void Read(ISerializerStream stream) {

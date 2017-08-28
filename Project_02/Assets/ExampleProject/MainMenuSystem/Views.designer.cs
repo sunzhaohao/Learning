@@ -186,6 +186,11 @@ namespace uFrame.ExampleProject {
         [UnityEngine.HideInInspector()]
         public String _Password;
         
+        [UnityEngine.SerializeField()]
+        [UFGroup("View Model Properties")]
+        [UnityEngine.HideInInspector()]
+        public String _ErrorMessage;
+        
         [UFToggleGroup("Login")]
         [UnityEngine.HideInInspector()]
         public bool _BindLogin = true;
@@ -216,6 +221,16 @@ namespace uFrame.ExampleProject {
         [UnityEngine.Serialization.FormerlySerializedAsAttribute("_Usernameinput")]
         protected UnityEngine.UI.InputField _UsernameInput;
         
+        [UFToggleGroup("ErrorMessage")]
+        [UnityEngine.HideInInspector()]
+        public bool _BindErrorMessage = true;
+        
+        [UFGroup("ErrorMessage")]
+        [UnityEngine.SerializeField()]
+        [UnityEngine.HideInInspector()]
+        [UnityEngine.Serialization.FormerlySerializedAsAttribute("_ErrorMessageinput")]
+        protected UnityEngine.UI.Text _ErrorMessageInput;
+        
         public override string DefaultIdentifier {
             get {
                 return base.DefaultIdentifier;
@@ -242,6 +257,7 @@ namespace uFrame.ExampleProject {
             var loginscreenview = ((LoginScreenViewModel)model);
             loginscreenview.Username = this._Username;
             loginscreenview.Password = this._Password;
+            loginscreenview.ErrorMessage = this._ErrorMessage;
         }
         
         public override void Bind() {
@@ -257,6 +273,9 @@ namespace uFrame.ExampleProject {
             }
             if (_BindUsername) {
                 this.BindInputFieldToProperty(_UsernameInput, this.LoginScreen.UsernameProperty);
+            }
+            if (_BindErrorMessage) {
+                this.BindTextToProperty(_ErrorMessageInput, this.LoginScreen.ErrorMessageProperty);
             }
         }
         

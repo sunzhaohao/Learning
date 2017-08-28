@@ -36,6 +36,11 @@ namespace uFrame.ExampleProject
             base.Login(viewModel);
             /* Direct call to the service. */
             UserManagementService.AuthorizeLocalUser(viewModel.Username, viewModel.Password);
+
+            if (UserManagementService.LocalUser.AuthorizationState != AuthorizationState.Authorized)
+                viewModel.ErrorMessage = "failed to login in ";
+            else
+                viewModel.ErrorMessage = string.Empty;
         }
 
     }

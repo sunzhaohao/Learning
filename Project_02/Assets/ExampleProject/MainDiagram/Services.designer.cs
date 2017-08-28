@@ -13,11 +13,11 @@ namespace uFrame.ExampleProject {
     using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
-    using UniRx;
-    using uFrame.Kernel;
     using uFrame.ExampleProject;
     using uFrame.MVVM;
     using uFrame.IOC;
+    using uFrame.Kernel;
+    using UniRx;
     using UnityEngine;
     
     

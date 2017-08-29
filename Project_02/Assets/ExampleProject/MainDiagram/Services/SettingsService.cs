@@ -13,12 +13,17 @@ namespace uFrame.ExampleProject
     public class SettingsService : SettingsServiceBase
     {
 
-
+        public float defaultVolume = 0.5f;
         //Simple property which works of PlayerPrefs
         public float Volume
         {
-            get { return PlayerPrefs.GetFloat("Settings_Volume", 0.5f); }
+            get { return PlayerPrefs.GetFloat("Settings_Volume", defaultVolume); }
             set { PlayerPrefs.SetFloat("Settings_Volume", value); }
+        }
+
+        public ResolutionInformation defaultResolution
+        {
+            get { return GetAvailableResolutions().First() ; }
         }
 
         //Advanced version of it, which works of PlayerPrefs, but uses string to 

@@ -35,10 +35,15 @@ namespace uFrame.ExampleProject
             // RequestMainMenuScreenCommand and pass LevelSelectScreenViewModel type
             this.BindButtonToHandler(LevelSelectButton, () =>
             {
-                Publish(new RequestMainMenuScreenCommand()
+                /*Publish(new RequestMainMenuScreenCommand()
                 {
                     ScreenType = typeof (LevelSelectScreenViewModel)
                 });
+                */
+                var evt = new RequestMainMenuScreenCommand();
+                evt.ScreenType = typeof(LevelSelectScreenViewModel);
+                Publish(evt);
+
             });
 
             this.BindButtonToHandler(SettingsButton, () =>

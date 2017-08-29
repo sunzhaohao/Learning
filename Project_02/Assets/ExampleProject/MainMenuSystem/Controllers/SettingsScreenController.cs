@@ -55,6 +55,8 @@ namespace uFrame.ExampleProject
         public override void Default(SettingsScreenViewModel viewModel)
         {
             base.Default(viewModel);
+            viewModel.Volume = SettingsService.Volume=SettingsService.defaultVolume;
+            viewModel.Resolution = SettingsService.Resolution;
         }
     }
 }

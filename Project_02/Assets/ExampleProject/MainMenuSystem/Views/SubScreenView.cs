@@ -23,7 +23,19 @@ namespace uFrame.ExampleProject
     {
 
         public GameObject ScreenUIContainer;
+        public CanvasGroup screenUIContainerCanvasGroup;
 
+        public void Awake()
+        {
+            if(ScreenUIContainer!=null)
+            {
+                screenUIContainerCanvasGroup = ScreenUIContainer.GetComponent<CanvasGroup>();
+
+                if (screenUIContainerCanvasGroup == null)
+                    screenUIContainerCanvasGroup = ScreenUIContainer.AddComponent<CanvasGroup>();
+
+            }
+        }
 
         protected override void InitializeViewModel(uFrame.MVVM.ViewModel model)
         {
@@ -45,9 +57,54 @@ namespace uFrame.ExampleProject
              * However, in this example we simply use public property to get a reference to ScreenUIContainer.
              * So we do not have to cache anything.
              */
-            ScreenUIContainer.gameObject.SetActive(active);
+            var targetAlpha = active ? 1 : 0;
+            var time = 0.2f;
+            var delay = active ? time : 0;
+            Debug.Log(active);
+
+            if (active)
+            {
+                // ͸fade in
+                ScreenUIContainer.SetActive(active);
+                //screenUIContainerCanvasGroup.alpha = 0f;
+                FadeAlpha(screenUIContainerCanvasGroup, targetAlpha, time, null, delay);
+            }
+            else
+            {   //  fade out 
+                FadeAlpha(screenUIContainerCanvasGroup, targetAlpha, time,
+                    () =>
+                    {
+                        ScreenUIContainer.SetActive(SubScreen.IsActive);
+                    },delay);
+            }
         }
 
+
+        void FadeAlpha(CanvasGroup target, float alpha, float time, Action onComplete, float delay)
+        {
+            StopCoroutine("Fade");
+            StartCoroutine(Fade(target, alpha, time, onComplete, delay));
+        }
+
+        IEnumerator Fade(CanvasGroup target,float alpha,float time,Action onComplete,float delay)
+        {
+            target.interactable = false;
+            if (delay > 0) yield return new WaitForSeconds(delay);
+            var startTime = Time.time;
+            while (Mathf.Abs(target.alpha - alpha) > 0.01f)
+            {
+                var elapsed = Time.time - startTime;
+                var normalizedTime = Mathf.Clamp(elapsed / time, 0f, 1f);
+                target.alpha = Mathf.Lerp(target.alpha, alpha, normalizedTime);
+
+                yield return null;
+            }
+
+            if (onComplete != null)
+                onComplete();
+            target.interactable = true;
+
+        }
 
 
     }

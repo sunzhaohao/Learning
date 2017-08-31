@@ -501,4 +501,65 @@ namespace uFrame.ExampleProject {
             // Any designer bindings are created in the base implementation.
         }
     }
+    
+    public class MainMenuUserViewBase : uFrame.MVVM.ViewBase {
+        
+        [UnityEngine.SerializeField()]
+        [UFGroup("View Model Properties")]
+        [UnityEngine.HideInInspector()]
+        public AuthorizationState _AuthorizationState;
+        
+        [UnityEngine.SerializeField()]
+        [UFGroup("View Model Properties")]
+        [UnityEngine.HideInInspector()]
+        public String _Username;
+        
+        [UFToggleGroup("Username")]
+        [UnityEngine.HideInInspector()]
+        public bool _BindUsername = true;
+        
+        [UFGroup("Username")]
+        [UnityEngine.SerializeField()]
+        [UnityEngine.HideInInspector()]
+        [UnityEngine.Serialization.FormerlySerializedAsAttribute("_Usernameinput")]
+        protected UnityEngine.UI.Text _UsernameInput;
+        
+        public override string DefaultIdentifier {
+            get {
+                return "LocalUser";
+            }
+        }
+        
+        public override System.Type ViewModelType {
+            get {
+                return typeof(UserViewModel);
+            }
+        }
+        
+        public UserViewModel User {
+            get {
+                return (UserViewModel)ViewModelObject;
+            }
+        }
+        
+        protected override void InitializeViewModel(uFrame.MVVM.ViewModel model) {
+            base.InitializeViewModel(model);
+            // NOTE: this method is only invoked if the 'Initialize ViewModel' is checked in the inspector.
+            // var vm = model as UserViewModel;
+            // This method is invoked when applying the data from the inspector to the viewmodel.  Add any view-specific customizations here.
+            var mainmenuuserview = ((UserViewModel)model);
+            mainmenuuserview.AuthorizationState = this._AuthorizationState;
+            mainmenuuserview.Username = this._Username;
+        }
+        
+        public override void Bind() {
+            base.Bind();
+            // Use this.User to access the viewmodel.
+            // Use this method to subscribe to the view-model.
+            // Any designer bindings are created in the base implementation.
+            if (_BindUsername) {
+                this.BindTextToProperty(_UsernameInput, this.User.UsernameProperty);
+            }
+        }
+    }
 }

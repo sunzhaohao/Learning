@@ -19,6 +19,7 @@ namespace uFrame.ExampleProject
         {
             base.Setup();
             LocalUser.AuthorizationState = AuthorizationState.Unauthorized;
+            LocalUser.Username = "%unknow%";
         }
 
         public void AuthorizeLocalUser(string Username, string Password)
@@ -27,6 +28,8 @@ namespace uFrame.ExampleProject
             {
                 Debug.Log("authorized in service");
                 LocalUser.AuthorizationState = AuthorizationState.Authorized;
+                LocalUser.Username = Username;
+               
             }
         }
 

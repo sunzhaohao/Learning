@@ -140,6 +140,7 @@
     <Compile Include="Assets\ExampleProject\MainMenuSystem\Views\LevelSelectScreenView.cs" />
     <Compile Include="Assets\ExampleProject\MainMenuSystem\Views\LoginScreenView.cs" />
     <Compile Include="Assets\ExampleProject\MainMenuSystem\Views\MainMenuRootView.cs" />
+    <Compile Include="Assets\ExampleProject\MainMenuSystem\Views\MainMenuUserView.cs" />
     <Compile Include="Assets\ExampleProject\MainMenuSystem\Views\MenuScreenView.cs" />
     <Compile Include="Assets\ExampleProject\MainMenuSystem\Views\SettingsScreenView.cs" />
     <Compile Include="Assets\ExampleProject\MainMenuSystem\Views\SubScreenView.cs" />

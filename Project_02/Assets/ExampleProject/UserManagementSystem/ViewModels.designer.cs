@@ -27,6 +27,8 @@ namespace uFrame.ExampleProject {
         
         private P<AuthorizationState> _AuthorizationStateProperty;
         
+        private P<String> _UsernameProperty;
+        
         public UserViewModelBase(uFrame.Kernel.IEventAggregator aggregator) : 
                 base(aggregator) {
         }
@@ -40,6 +42,15 @@ namespace uFrame.ExampleProject {
             }
         }
         
+        public virtual P<String> UsernameProperty {
+            get {
+                return _UsernameProperty;
+            }
+            set {
+                _UsernameProperty = value;
+            }
+        }
+        
         public virtual AuthorizationState AuthorizationState {
             get {
                 return AuthorizationStateProperty.Value;
@@ -49,19 +60,31 @@ namespace uFrame.ExampleProject {
             }
         }
         
+        public virtual String Username {
+            get {
+                return UsernameProperty.Value;
+            }
+            set {
+                UsernameProperty.Value = value;
+            }
+        }
+        
         public override void Bind() {
             base.Bind();
             _AuthorizationStateProperty = new P<AuthorizationState>(this, "AuthorizationState");
+            _UsernameProperty = new P<String>(this, "Username");
         }
         
         public override void Read(ISerializerStream stream) {
             base.Read(stream);
             this.AuthorizationState = (AuthorizationState)stream.DeserializeInt("AuthorizationState");;
+            this.Username = stream.DeserializeString("Username");;
         }
         
         public override void Write(ISerializerStream stream) {
             base.Write(stream);
             stream.SerializeInt("AuthorizationState", (int)this.AuthorizationState);;
+            stream.SerializeString("Username", this.Username);
         }
         
         protected override void FillCommands(System.Collections.Generic.List<uFrame.MVVM.ViewModelCommandInfo> list) {
@@ -72,6 +95,8 @@ namespace uFrame.ExampleProject {
             base.FillProperties(list);
             // PropertiesChildItem
             list.Add(new ViewModelPropertyInfo(_AuthorizationStateProperty, false, false, true, false));
+            // PropertiesChildItem
+            list.Add(new ViewModelPropertyInfo(_UsernameProperty, false, false, false, false));
         }
     }
     

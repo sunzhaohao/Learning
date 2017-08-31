@@ -35,6 +35,8 @@ namespace uFrame.ExampleProject {
         
         private MenuScreenController _MenuScreenController;
         
+        private UserController _UserController;
+        
         [uFrame.IOC.InjectAttribute("MainMenuRoot")]
         public virtual MainMenuRootViewModel MainMenuRoot {
             get {
@@ -125,6 +127,19 @@ namespace uFrame.ExampleProject {
             }
         }
         
+        [uFrame.IOC.InjectAttribute()]
+        public virtual UserController UserController {
+            get {
+                if (_UserController==null) {
+                    _UserController = Container.CreateInstance(typeof(UserController)) as UserController;;
+                }
+                return _UserController;
+            }
+            set {
+                _UserController = value;
+            }
+        }
+        
         public override void Load() {
             Container.RegisterViewModelManager<MainMenuRootViewModel>(new ViewModelManager<MainMenuRootViewModel>());
             Container.RegisterController<MainMenuRootController>(MainMenuRootController);
@@ -138,6 +153,8 @@ namespace uFrame.ExampleProject {
             Container.RegisterController<LevelSelectScreenController>(LevelSelectScreenController);
             Container.RegisterViewModelManager<MenuScreenViewModel>(new ViewModelManager<MenuScreenViewModel>());
             Container.RegisterController<MenuScreenController>(MenuScreenController);
+            Container.RegisterViewModelManager<UserViewModel>(new ViewModelManager<UserViewModel>());
+            Container.RegisterController<UserController>(UserController);
             Container.RegisterViewModel<MainMenuRootViewModel>(MainMenuRoot, "MainMenuRoot");
         }
     }

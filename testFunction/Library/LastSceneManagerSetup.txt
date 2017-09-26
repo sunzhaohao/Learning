@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/DoozyUI/Examples/Example 3 - Buttons/Example 3 - Buttons.unity
+- path: Assets/DoozyUI/Examples/Example 1 - SimpleScene/Example 1 - SimpleScene.unity
   isLoaded: 1
   isActive: 1

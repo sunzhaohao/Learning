@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Name: Hierarchy (MAYA)
   m_EditorClassIdentifier: 
   last_scenes:
+  - 8d1e0a2aaba370a42aaa66c903c6e9af
   - 52e5bc40dc73e4a43b7703d736d71ed7
   - 5fccccadf31cb7148a4f8f0563ed1810
   - eff1fe28f11c1fa43a4019748a284cb0
@@ -62,7 +63,7 @@ MonoBehaviour:
     width: 48
   - sib: 7
     enable: 1
-    width: 68
+    width: 17
   lastIconSelect: []
   listKey: []
   listValue: []

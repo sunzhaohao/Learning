@@ -1177,7 +1177,7 @@ MonoBehaviour:
   m_OfflineScene: 
   m_OnlineScene: 
   m_SpawnPrefabs:
-  - {fileID: 1000011853879338, guid: ae0a4d88ab925784bb21366c30a54b70, type: 2}
+  - {fileID: 1709067557039462, guid: a835c27290829d94b9384006f9703c27, type: 2}
   m_CustomConfig: 1
   m_MaxConnections: 100
   m_ConnectionConfig:
@@ -1609,6 +1609,15 @@ Prefab:
     - target: {fileID: 4621496214201924, guid: 377b961bdc153854193d9d2ce0d03f25, type: 2}
       propertyPath: m_RootOrder
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114509298780526028, guid: 377b961bdc153854193d9d2ce0d03f25,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1803137604430634, guid: 377b961bdc153854193d9d2ce0d03f25, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 377b961bdc153854193d9d2ce0d03f25, type: 2}

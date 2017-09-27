@@ -135,6 +135,11 @@
     <Compile Include="Assets\Barebones\Demos\QuickSetup\Editor\MsfQuickBuild.cs" />
     <Compile Include="Assets\Barebones\Msf\Editor\HelpBoxDrawer.cs" />
     <Compile Include="Assets\Barebones\Msf\Editor\SceneFieldPropertyDrawer.cs" />
+    <Compile Include="Assets\PlayMaker\Editor\AssetGUIDs.cs" />
+    <Compile Include="Assets\PlayMaker\Editor\EditorStartupPrefs.cs" />
+    <Compile Include="Assets\PlayMaker\Editor\PlayMakerEditorStartup.cs" />
+    <Compile Include="Assets\PlayMaker\Editor\PlayMakerWelcomeWindow.cs" />
+    <Compile Include="Assets\PlayMaker\Editor\PreUpdateChecker.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Barebones\Credits.txt" />
@@ -142,6 +147,8 @@
     <None Include="Assets\Barebones\MSF README.txt" />
     <None Include="Assets\Barebones\MSF ReleaseNotes.txt" />
     <None Include="Assets\Barebones\Resources\Fonts\OpenSans\License!.txt" />
+    <None Include="Assets\PlayMaker\Editor\Install\readme.txt" />
+    <None Include="Assets\PlayMaker\Readme.txt" />
     <None Include="Assets\readme.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

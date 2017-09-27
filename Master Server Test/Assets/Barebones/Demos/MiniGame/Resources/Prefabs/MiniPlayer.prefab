@@ -482,6 +482,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 204167826e173864ca16bd47a9534bec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fireBallPref: {fileID: 1709067557039462, guid: a835c27290829d94b9384006f9703c27,
+    type: 2}
   tran: {fileID: 4000013382868232}
 --- !u!143 &143000010048934216
 CharacterController:

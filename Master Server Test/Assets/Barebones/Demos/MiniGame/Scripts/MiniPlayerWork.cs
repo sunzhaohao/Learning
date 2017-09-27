@@ -6,6 +6,7 @@ using UnityEngine.Networking;
 public class MiniPlayerWork : NetworkBehaviour
 {
 
+    public GameObject fireBallPref;
     public Transform tran;
 	// Use this for initialization
 	void Start () {
@@ -20,7 +21,18 @@ public class MiniPlayerWork : NetworkBehaviour
 	        return;
 	    if (Input.GetKeyDown(KeyCode.Space))
 	    {
-	        tran.position=new Vector3(tran.position.x,tran.position.y+10,tran.position.z);
+	        CmdFire();
 	    }
 	}
+
+    [Command]
+    void CmdFire()
+    {
+        Vector3 pos = tran.position;
+        pos.y += 2;
+        GameObject bullet=Instantiate(fireBallPref,pos,Quaternion.identity) as GameObject;
+        bullet.GetComponent<Rigidbody>().velocity = tran.forward * 2;
+        Destroy(bullet,2);
+        NetworkServer.Spawn(bullet);
+    }
 }

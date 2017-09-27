@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Barebones/Demos/WorldsDemo/Scenes/WorldDemo-LoadingScene.unity
+- path: Assets/Barebones/Demos/MiniGame/Scenes/MiniGame.unity
   isLoaded: 1
   isActive: 1

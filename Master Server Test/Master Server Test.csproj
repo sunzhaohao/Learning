@@ -100,6 +100,7 @@
     <Compile Include="Assets\Barebones\Demos\Common\Scripts\UnetMsfPlayer.cs" />
     <Compile Include="Assets\Barebones\Demos\Common\Scripts\UnetRoomConnector.cs" />
     <Compile Include="Assets\Barebones\Demos\Common\Scripts\UnetServerStarter.cs" />
+    <Compile Include="Assets\Barebones\Demos\MiniGame\Scripts\Fire.cs" />
     <Compile Include="Assets\Barebones\Demos\MiniGame\Scripts\MiniCoin.cs" />
     <Compile Include="Assets\Barebones\Demos\MiniGame\Scripts\MiniGameUi.cs" />
     <Compile Include="Assets\Barebones\Demos\MiniGame\Scripts\MiniNetworkManager.cs" />
@@ -320,6 +321,11 @@
     <Compile Include="Assets\Barebones\Utils\Scripts\GenericUiList.cs" />
     <Compile Include="Assets\Barebones\Utils\Scripts\GUIConsole.cs" />
     <Compile Include="Assets\Barebones\Utils\Scripts\SafeCoroutine.cs" />
+    <Compile Include="Assets\Scripts\Bullet.cs" />
+    <Compile Include="Assets\Scripts\EnemySpawn.cs" />
+    <Compile Include="Assets\Scripts\Health.cs" />
+    <Compile Include="Assets\Scripts\LookAtCamera.cs" />
+    <Compile Include="Assets\Scripts\PlayerController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Barebones\Credits.txt" />
@@ -327,6 +333,8 @@
     <None Include="Assets\Barebones\MSF README.txt" />
     <None Include="Assets\Barebones\MSF ReleaseNotes.txt" />
     <None Include="Assets\Barebones\Resources\Fonts\OpenSans\License!.txt" />
+    <None Include="Assets\PlayMaker\Editor\Install\readme.txt" />
+    <None Include="Assets\PlayMaker\Readme.txt" />
     <None Include="Assets\readme.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

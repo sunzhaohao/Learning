@@ -29,10 +29,13 @@ public class MiniPlayerWork : NetworkBehaviour
     void CmdFire()
     {
         Vector3 pos = tran.position;
+        pos.x+=(tran.forward.x*2);
+        pos.z+= (tran.forward.z*2);
         pos.y += 2;
+
         GameObject bullet=Instantiate(fireBallPref,pos,Quaternion.identity) as GameObject;
         bullet.GetComponent<Rigidbody>().velocity = tran.forward * 2;
-        Destroy(bullet,2);
+        Destroy(bullet,4);
         NetworkServer.Spawn(bullet);
     }
 }

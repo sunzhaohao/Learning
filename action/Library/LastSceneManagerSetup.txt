@@ -1,4 +1,0 @@
-sceneSetups:
-- path: Assets/Samurai_Katana/Samurai_Katana.unity
-  isLoaded: 1
-  isActive: 1

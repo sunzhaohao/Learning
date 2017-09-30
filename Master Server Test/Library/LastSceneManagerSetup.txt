@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Barebones/Demos/QuickSetup/Scenes/GameLevels/SimplePlatform.unity
+- path: Assets/Barebones/Demos/MiniGame/Scenes/MiniGame.unity
   isLoaded: 1
   isActive: 1
